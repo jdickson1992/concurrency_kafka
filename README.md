@@ -1,2 +1,3 @@
-# concurrency_kafka
-Creating a concurrent kafka consumer 
+In this example, the producer sends a JSON-encoded message containing a random sleep_time value (between 1 and 10) to the topic "test" every second. The delivery_report function is called when the broker has received and acknowledged the message. The producer.poll(0) call is used to trigger any callbacks for deliveries that have completed since the last call to poll. The KAFKA_BROKER environment variable is used to determine the address of the Kafka broker. If this variable is not set, the default value is "localhost:9092".
+
+In this version, the logging module is used to write log messages, with the format "%(asctime)s %(threadName)s/%(thread)d %(name)s %(message)s" specified using the basicConfig function. The log level is set to logging.INFO, so that only messages with severity "INFO" or higher will be logged.
