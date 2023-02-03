@@ -79,6 +79,12 @@ if __name__ == '__main__':
 
     # Check if multithreading is enabled
     multi_thread = os.environ.get('MULTI_THREAD')
+    
+    # Create a consumer group name based on threads used
+    if multi_thread == 'true':
+        consumer_group = 'single-threaded-group'
+    else:
+        consumer_group = 'multi-threaded-group'
 
     # Set up logging
     logging.basicConfig(
