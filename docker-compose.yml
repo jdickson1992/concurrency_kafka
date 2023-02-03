@@ -1,3 +1,4 @@
+version: "3.9"
 services:
   kafka:
     image: confluentinc/cp-kafka:7.3.0
@@ -8,6 +9,7 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_BROKER_ID=1
       - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_DEFAULT_REPLICATION_FACTOR=1
     restart: always
   zookeeper:
@@ -19,7 +21,6 @@ services:
     restart: always
   kafka-ui:
     image: provectuslabs/kafka-ui
-    container_name: kafka-ui
     ports:
       - "8080:8080"
     restart: always
@@ -29,15 +30,19 @@ services:
       - KAFKA_CLUSTERS_0_READONLY=false
   python_producer:
     build: .
-    ports:
-      - "8000:8000"
     environment:
-      - KAFKA_BROKER=kafka:9092
+      - KAFKA_TOPIC=test            # Kafka topic to publish
+      - KAFKA_BROKER=kafka:9092     # Kafka broker list
+      - PUBLISH_DURATION=60         # The duration the application will produce to kafka
     command: python producer.py
+    deploy:
+      replicas: 2                   # The number of producer replicas we want
+
   python_consumer:
     build: .
-    ports:
-      - "8001:8000"
     environment:
-      - KAFKA_BROKER=kafka:9092
+      - KAFKA_TOPIC=test            # Kafka topic to subscribe
+      - KAFKA_BROKER=kafka:9092     # Kafka broker list
+      - BATCH_SIZE=20               # Number of messages consumer will try and pull down from kafka (this sets number of threads too)
+      - MULTI_THREAD=false           # Use threading if true
     command: python consumer.py
