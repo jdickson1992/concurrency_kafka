@@ -1,3 +1,5 @@
+## Intro 📖
+
 This repo will explore ways to *increase the concurrency of a Kafka consumer* so that we can achieve more with a single consumer than simply increasing the number of partitions.
 
 A **multi-threaded** consumer model will be investigated.
@@ -6,9 +8,10 @@ A **multi-threaded** consumer model will be investigated.
 2. Once a batch of messages has been received by the main thread, they will deliver the messages to a pool of threads where the processing will be done *concurrently*.
 3. The main thread is the only thread that commits an offset. It will wait for all threads to finish processing.
 
-Kafka consumer & producer logic is scripted in Python. All applications are *containerised*.
+> All applications are *containerised* 🐳
 
-## Getting started
+
+## Getting started 🚀
 
 Run:
 
@@ -33,4 +36,4 @@ Setting `MULTI_THREAD=true` in the compose file means messages in the batch will
 
 > https://user-images.githubusercontent.com/47530786/216724131-e394165e-7abf-40ed-87eb-a54b8b2a3c5d.mov
 
-⚠️ The **maximum** number of threads that will be running inside the kafka consumer container will be equal to **`BATCH_SIZE`+1** (1=Main thread)
+⚠️ The **maximum** number of threads that will be running inside the kafka consumer container will be equal to **`BATCH_SIZE`+1** (1=`Main thread`)
