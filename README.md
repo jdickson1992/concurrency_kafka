@@ -2,6 +2,10 @@
 
 This repo will explore ways to *increase the concurrency of a Kafka consumer* so that we can achieve more with a single consumer than simply increasing the number of partitions.
 
+If you're curious👀 and want a more *in-depth* explanation of what's going on here ☞ https://jdickson.dev/posts/concurrency/thread_safe_consumer/ 
+
+**ELI5** 👶
+
 A **multi-threaded** consumer model will be investigated.
 
 1. A single main thread will call `poll()` and fetch data from multiple / single partition(s).
