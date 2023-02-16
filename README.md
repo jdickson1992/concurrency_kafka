@@ -38,7 +38,7 @@ Setting `MULTI_THREAD=true` in the compose file means messages in the batch will
 
 ⚠️ The **maximum** number of threads that will be running inside the kafka consumer container will be equal to **`BATCH_SIZE`+1** (1=`Main thread`)
 
-## Finished 🚀
+## Finished 🔚
 
 Run:
 
