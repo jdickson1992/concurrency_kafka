@@ -2,7 +2,7 @@
 
 This repo will explore ways to *increase the concurrency of a Kafka consumer* so that we can achieve more with a single consumer than simply increasing the number of partitions.
 
-If you're curious👀 and want a more *in-depth* explanation of what's going on here ☞ https://jdickson.dev/posts/concurrency/thread_safe_consumer/ 
+If you're curious👀 and want a more *in-depth* explanation of what's going on ☞ [jdickson.dev/thread_safe_consumer](https://jdickson.dev/posts/concurrency/thread_safe_consumer/)
 
 **ELI5** 👶
 
